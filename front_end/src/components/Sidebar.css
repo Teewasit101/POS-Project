@@ -23,7 +23,6 @@
 .side-links li {
   padding: 15px 40px;
   border-radius: 8px;
-  transition: background-color 0.5s ease;
   margin: 11px 16px;
 }
 
@@ -34,6 +33,15 @@
 
 
 }
+.side-links li.active {
+  background-color: #1fc0e9;
+  border-radius: 8px;
+}
+.side-links li.active a {
+  color: #ffffff;
+}
+
+
 
 .side-links li a {
   color: rgb(0, 0, 0);
@@ -42,19 +50,19 @@
 }
 
 .side-links li a:hover {
-  color: #ffffff;
- 
-  
-
-  
+  color: #ffffff;  
 }
+
+
 
 
 .account {
   padding: 16px;
   font-size: 14px;
-  color: #ecf0f1;
+  color: #ffffff;
   background-color: #1fc0e9;
+  border-radius: 8px;
+  margin: 11px 16px;
 }
 
 .logout {
@@ -63,7 +71,6 @@
   color: #000000;
   cursor: pointer;
   font-weight: bold;
-  transition: color 0.3s ease;
   margin-top: 15px;
   margin-bottom: 30px;
   margin-left: 16px;
