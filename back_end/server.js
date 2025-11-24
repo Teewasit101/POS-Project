@@ -11,7 +11,7 @@ app.use(cors());
 // ========================Oracle Client Init===========================
 const clientLib =
   process.platform === "win32"
-    ? "C:\\oracle\\instantclient_23_9"
+    ? "C:\\oracle_sv\\instantclient_23_9"
     : "/opt/oracle/instantclient_23_26";
 oracle.initOracleClient({ libDir: clientLib });
 // ========================Oracle DB config===========================
