@@ -1,0 +1,121 @@
+/* ไฟล์: front_end/src/pages/LoginPage.css */
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f3f4f6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-box {
+  background-color: white;
+  padding: 50px 40px; /* เพิ่มขอบพื้นที่ด้านใน */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(55, 56, 56, 0.1);
+  width: 100%;
+  max-width: 400px;
+  min-height: 300px; /* บังคับกล่องให้ยาวลงมาที่ 500px */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* จัดให้ฟอร์มอยู่กึ่งกลางกล่องเสมอ */
+}
+
+.login-title {
+  text-align: center;
+  margin-bottom: 50px; /* เพิ่มระยะห่างจากชื่อระบบลงมาที่ฟอร์ม */
+  color: #333;
+}
+
+.error-message {
+  background-color: #fee2e2;
+  color: #dc2626;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.form-group {
+  margin-bottom: 25px; /* เพิ่มช่องว่างระหว่างชื่อผู้ใช้และรหัสผ่าน */
+}
+
+.form-group.last {
+  margin-bottom: 40px; /* ดันช่องรหัสผ่านให้ห่างจากปุ่มมากขึ้น */
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px; /* ขยายความอ้วนของช่องกรอกให้สมดุลกับกล่อง */
+  border-radius: 8px;
+  border: 1px solid #9ca3af;
+  background-color: white; /* สีเทาตามที่คุณต้องการ */
+  color: #1f2937; /* สีตัวอักษรสีเทาเข้ม */
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background-color: #f3f4f6; /* สว่างขึ้นตอนคลิกพิมพ์ */
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.submit-button {
+  width: 100%;
+  padding: 14px; /* ขยายปุ่มให้ใหญ่ขึ้นนิดนึง */
+  background-color: #1fc0e9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.submit-button:hover {
+  background-color: #1fc0e9;
+}
+
+/* --- ส่วนเพิ่มเติมสำหรับปุ่มดูรหัสผ่าน --- */
+
+/* กำหนดกรอบให้ icon อ้างอิงตำแหน่งได้ */
+.password-input-container {
+  position: relative;
+  width: 100%;
+}
+
+/* ดันตัวหนังสือในช่องรหัสผ่านไม่ให้ไปทับกับไอคอนรูปตา */
+.password-input-container .form-input {
+  padding-right: 45px; 
+}
+
+/* จัดตำแหน่งไอคอนรูปตาให้อยู่ในกล่องฝั่งขวา */
+.password-toggle-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%); /* ดันให้อยู่กึ่งกลางแนวตั้งพอดีเป๊ะ */
+  cursor: pointer;
+  color: #9ca3af; /* สีเทาอ่อน */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px; /* ขนาดไอคอน */
+}
+
+/* เปลี่ยนสีไอคอนเมื่อเอาเมาส์ไปชี้ */
+.password-toggle-icon:hover {
+  color: #3b82f6; /* เป็นสีฟ้า */
+}

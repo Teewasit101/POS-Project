@@ -21,7 +21,7 @@
 }
 
 .side-links li {
-  padding: 15px 40px;
+  padding: 0;
   border-radius: 8px;
   margin: 11px 16px;
 }
@@ -44,9 +44,18 @@
 
 
 .side-links li a {
+  padding: 15px 40px; /* ย้ายมาใส่ตรงนี้แทน */
   color: rgb(0, 0, 0);
   text-decoration: none;
-  display: block;
+  
+  /* เปลี่ยนเป็น flex เพื่อให้ไอคอนกับตัวหนังสือเรียงสวยๆ */
+  display: flex; 
+  align-items: center; 
+  gap: 12px; /* ระยะห่างระหว่างไอคอนกับตัวหนังสือ */
+  
+  border-radius: 8px; /* เผื่อไว้ให้ขอบโค้งเนียนไปกับกล่อง */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .side-links li a:hover {
