@@ -1,0 +1,269 @@
+/* =========================================
+   ไฟล์: front_end/src/pages/RolesPage.css
+========================================= */
+
+/* พื้นหลังหน้าเพจสีเทาอ่อน */
+.roles-page-container {
+  padding: 30px;
+  background-color: #f4f7f6;
+  border-radius: 6px;
+  min-height: calc(93vh - 60px);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ส่วนหัว */
+.roles-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.roles-header h2 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* ปุ่ม "เพิ่มตำแหน่ง"  */
+.btn-add-role {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #1fc0e9; /* สี Cyan */
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 188, 212, 0.3);
+}
+
+.btn-add-role:hover {
+  background-color: #00acc1;
+  transform: translateY(-1px);
+}
+
+/* กล่องตารางขาว มีมุมโค้งมนและเงา */
+.roles-table-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  padding: 5px;
+}
+
+/* ตาราง */
+.roles-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.roles-table th, 
+.roles-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* หัวตาราง */
+.roles-table th {
+  background-color: #fdfdfd;
+  color: #6c757d;
+  font-weight: bold;
+}
+
+.roles-table tbody tr:hover {
+  background-color: #fcfcfc;
+}
+
+/* Badge สีตำแหน่ง (ตาม ID) */
+.roles-role-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/*  สี Badge เหมือนในรูป image_0.png */
+.roles-role-admin { background-color: #fde2e4; color: #e74c3c; } /* ชมพู-แดง */
+.roles-role-cashier { background-color: #e0e7ff; color: #4f46e5; } /* ฟ้า-น้ำเงิน */
+.roles-role-other { background-color: #fff3cd; color: #856404; } /* ส้ม-น้ำตาล */
+
+/* ปุ่มจัดการ (แก้ไข/ลบ) ในกรอบสี่เหลี่ยม  */
+.roles-action-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center; 
+  align-items: center;     
+  width: 100%; 
+}
+
+.role-btn-edit, 
+.role-btn-delete {
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  transition: all 0.2s;
+}
+
+/* =========================================
+   Role Buttons
+========================================= */
+
+.role-btn-edit {
+  background-color: #f5b041;; /* สีส้ม */
+}
+
+.role-btn-edit:hover {
+  background-color: #f39c12;
+}
+
+.role-btn-delete {
+  background-color: #e74c3c; /* สีแดง */
+}
+
+.role-btn-delete:hover {
+  background-color: #c0392b;
+}
+
+
+/* =========================================
+   Modal หน้าต่าง Pop-up
+========================================= */
+
+.roles-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.roles-modal-box {
+  background-color: white;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 25px;
+}
+
+.roles-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 15px;
+}
+
+.roles-modal-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 20px;
+}
+
+.roles-close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #adb5bd;
+  cursor: pointer;
+}
+
+.roles-close-btn:hover {
+  color: #e74c3c;
+}
+
+
+/* =========================================
+   Form
+========================================= */
+
+.roles-form-group {
+  margin-bottom: 15px;
+}
+
+.roles-form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #495057;
+  font-weight: bold;
+}
+
+.roles-form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+  color: #1f2937;
+  background-color: white;
+}
+
+.roles-form-group input:focus {
+  outline: none;
+  border-color: #00bcd4;
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+}
+
+
+/* =========================================
+   Modal Footer
+========================================= */
+
+.roles-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.roles-btn-cancel {
+  background-color: #f8f9fa;
+  color: #495057;
+  border: 1px solid #ced4da;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.roles-btn-cancel:hover {
+  background-color: #e2e6ea;
+}
+
+.roles-btn-confirm {
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.roles-btn-confirm:hover {
+  background-color: #00acc1;
+}

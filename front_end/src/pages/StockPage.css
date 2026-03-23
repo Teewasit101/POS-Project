@@ -1,0 +1,435 @@
+/* =========================================
+   ไฟล์: front_end/src/pages/ProductsPage.css
+========================================= */
+
+.prod-page-container {
+  padding: 30px;
+  background-color: #f4f7f6;
+  border-radius: 6px;
+  min-height: calc(93vh - 60px);
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* Header */
+.prod-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.prod-header h2 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.prod-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Search Box */
+.prod-search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.prod-search-icon {
+  position: absolute;
+  left: 12px;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.prod-search-box input {
+  padding: 10px 15px 10px 35px;
+  border: 1px solid #9ca3af;
+  background-color: white; 
+  border-radius: 6px;
+  font-size: 14px;
+  width: 250px;
+  outline: none;
+  transition: 0.2s;
+  color: #1f2937;
+}
+
+.prod-search-box input:focus {
+  border-color: #00bcd4;
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+}
+
+/* Add Product Button */
+.btn-add-prod {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #1fc0e9;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 188, 212, 0.3);
+}
+
+.btn-add-prod:hover {
+  background-color: #00acc1;
+  transform: translateY(-1px);
+}
+
+/* Table */
+.prod-table-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  padding: 5px;
+}
+
+.prod-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.prod-table th,
+.prod-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.prod-table th {
+  background-color: #fdfdfd;
+  color: #6c757d;
+  font-weight: bold;
+}
+
+.prod-table tbody tr:hover {
+  background-color: #fcfcfc;
+}
+
+/* Stock Badges */
+.prod-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.stock-ok {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.stock-low {
+  background-color: #fef08a;
+  color: #ca8a04;
+}
+
+.stock-out {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+/* Action Buttons */
+.prod-action-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center; 
+  align-items: center;     
+  width: 100%;             
+}
+
+.prod-btn-edit,
+.prod-btn-delete {
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.prod-btn-edit {
+  background-color: #f5b041;
+}
+
+.prod-btn-edit:hover {
+  background-color: #f5b041;
+  
+}
+
+.prod-btn-delete {
+  background-color: #e74c3c;
+}
+
+.prod-btn-delete:hover {
+  background-color: #c0392b;
+  
+}
+
+.prod-no-data {
+  text-align: center;
+  color: #adb5bd;
+  padding: 40px !important;
+}
+
+/* Pagination */
+.prod-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-top: 1px solid #f0f0f0;
+  background-color: #fcfcfc;
+}
+
+.prod-page-btns {
+  display: flex;
+  gap: 5px;
+}
+
+.p-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  border: 1px solid #d1d5db;
+  background-color: white;
+  color: #374151;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.p-btn:hover:not(:disabled) {
+  background-color: #f3f4f6;
+}
+
+.p-btn.active {
+  background-color: #00bcd4;
+  color: white;
+  border-color: #00bcd4;
+  font-weight: bold;
+}
+
+.p-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Modal */
+.prod-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.prod-modal-box {
+  background-color: white;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 25px;
+}
+
+.prod-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 15px;
+}
+
+.prod-modal-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 20px;
+}
+
+.prod-close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #adb5bd;
+  cursor: pointer;
+}
+
+.prod-close-btn:hover {
+  color: #e74c3c;
+}
+
+/* Form */
+.prod-form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.prod-form-group {
+  flex: 1;
+}
+
+.prod-form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #495057;
+  font-weight: bold;
+}
+
+.prod-form-group input,
+.prod-form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #9ca3af;
+  background-color: white; 
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+  color: #1f2937;
+  outline: none;
+}
+
+.prod-form-group input:focus,
+.prod-form-group select:focus {
+  border-color: #00bcd4;
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+}
+
+.prod-readonly {
+  background-color: #f1f3f5;
+  cursor: not-allowed;
+  color: #6c757d !important;
+}
+
+/* Modal Footer */
+.prod-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.prod-btn-cancel {
+  background-color: #f8f9fa;
+  color: #495057;
+  border: 1px solid #ced4da;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.prod-btn-confirm {
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* =========================================
+   ส่วนที่เพิ่มมาใหม่สำหรับรูปภาพ
+========================================= */
+
+.prod-img-preview {
+  width: 42px;
+  height: 42px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid #eee;
+}
+
+.prod-img-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* เพิ่มสีฟ้าสำหรับป้ายหมวดหมู่ */
+.cat-blue {
+  background-color: #e0f2fe;
+  color: #146bcf;
+}
+
+/* ปุ่มอัปโหลดรูปภาพจากเครื่อง */
+.prod-btn-upload {
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+
+.prod-btn-upload:hover {
+  background-color: #e2e8f0;
+  border-color: #94a3b8;
+}
+
+/* ซ่อนลูกศรขึ้น/ลง ในช่องกรอกตัวเลข (ราคา)  */
+/* สำหรับ Chrome, Safari, Edge, Opera */
+.prod-form-group input[type="number"]::-webkit-outer-spin-button,
+.prod-form-group input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* =========================================
+   Dropdown กรองหมวดหมู่ (Filter)
+========================================= */
+.prod-filter-select {
+  padding: 10px 15px;
+  border: 1px solid #9ca3af;
+  background-color: white;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  color: #1f2937;
+  cursor: pointer;
+  transition: 0.2s;
+  min-width: 150px;
+}
+
+.prod-filter-select:focus {
+  border-color: #00bcd4;
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+}

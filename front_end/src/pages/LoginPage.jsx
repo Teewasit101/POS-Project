@@ -1,15 +1,28 @@
 // ไฟล์: front_end/src/pages/LoginPage.jsx
-import React, { useState } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // 1. ดึงไอคอนรูปตาเข้ามา
+import React, { useState, useEffect } from 'react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 import './LoginPage.css';
 
 function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
-  
-  // 2. สร้าง State สำหรับเปิด/ปิดรหัสผ่าน (เริ่มต้นเป็น false คือปิดไว้)
   const [showPassword, setShowPassword] = useState(false);
+
+  // 1. ดักจับคนที่ล็อกอินอยู่แล้ว ไม่ให้เข้าหน้า Login ซ้ำ
+  useEffect(() => {
+    const loggedInUser = sessionStorage.getItem('user');
+    if (loggedInUser) {
+      const user = JSON.parse(loggedInUser);
+      // ถ้าเป็น Admin ให้กลับไปหน้า reports ถ้าเป็น Cashier ให้ไปหน้า sales
+      if (user.role === 'Admin') {
+        window.location.replace('/sales');
+      } else {
+        window.location.replace('/sales');
+      }
+    }
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -25,15 +38,27 @@ function LoginPage() {
       const data = await response.json();
 
       if (response.ok) {
+        // บันทึกข้อมูลลง Session
         sessionStorage.setItem('user', JSON.stringify(data.user));
-        alert(`ยินดีต้อนรับ ${data.user.name} (${data.user.role})`);
         
-        if (data.user.role === 'Admin') {
-          window.location.href = '/reports';
-        } else {
-          window.location.href = '/sales';
-        }
+        // แจ้งเตือนความสำเร็จ
+        Swal.fire({
+          icon: 'success',
+          title: 'เข้าสู่ระบบสำเร็จ!',
+          text: `ยินดีต้อนรับ ${data.user.name} (${data.user.role})`,
+          showConfirmButton: false,
+          timer: 1500 
+        }).then(() => {
+          // 2. ใช้ replace เพื่อเปลี่ยนหน้า และลบหน้า Login ออกจากประวัติการกด Back
+          if (data.user.role === 'Admin') {
+            window.location.replace('/sales');
+          } else {
+            window.location.replace('/sales');
+          }
+        });
+
       } else {
+        // รหัสผ่านผิด หรือไม่พบผู้ใช้
         setErrorMsg(data.message);
       }
     } catch (error) {
@@ -68,17 +93,15 @@ function LoginPage() {
 
           <div className="form-group last">
             <label className="form-label">รหัสผ่าน</label>
-            {/* 3. เอา div มาครอบ input เพื่อให้จัดตำแหน่งไอคอนรูปตาได้ */}
             <div className="password-input-container">
               <input 
-                type={showPassword ? "text" : "password"} /* สลับประเภท input ตาม State */
+                type={showPassword ? "text" : "password"}
                 className="form-input"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 placeholder="กรอกรหัสผ่าน"
               />
-              {/* 4. ปุ่มสลับเปิด/ปิดตา */}
               <span 
                 className="password-toggle-icon" 
                 onClick={() => setShowPassword(!showPassword)}

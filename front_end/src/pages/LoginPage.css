@@ -85,7 +85,8 @@
 }
 
 .submit-button:hover {
-  background-color: #1fc0e9;
+  background-color: #00acc1;
+  transform: translateY(-1px);
 }
 
 /* --- ส่วนเพิ่มเติมสำหรับปุ่มดูรหัสผ่าน --- */
@@ -119,3 +120,4 @@
 .password-toggle-icon:hover {
   color: #3b82f6; /* เป็นสีฟ้า */
 }
+

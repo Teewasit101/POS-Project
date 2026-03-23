@@ -8,8 +8,9 @@ router.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
     // ค้นหาพนักงานและ Role จาก Database
+    // แก้ไขจุดที่ 1: เพิ่ม e.role_id ลงใน SELECT
     const query = `
-      SELECT e.employee_id, e.username, e.password, e.name, r.role_name 
+      SELECT e.employee_id, e.username, e.password, e.first_name,e.last_name, e.role_id, r.role_name 
       FROM employee e
       JOIN roles r ON e.role_id = r.role_id
       WHERE e.username = $1
@@ -34,8 +35,9 @@ router.post('/login', async (req, res) => {
       user: {
         employee_id: user.employee_id,
         username: user.username,
-        name: user.name,
-        role: user.role_name
+        name: `${user.first_name} ${user.last_name}`,
+        role: user.role_name,
+        role_id: user.role_id  // ✨ แก้ไขจุดที่ 2: ส่งเลข role_id กลับไปให้ React
       }
     });
 
