@@ -202,7 +202,7 @@ function ProductsPage() {
                   <td style={{ fontWeight: 'bold' }}>{prod.product_id}</td>
                   <td style={{ color: '#2c3e50',fontWeight: 'bold' }}>{prod.product_name}</td>
                   <td><span className="prod-badge cat-blue">{prod.category_name}</span></td>
-                  <td style={{ color: '#2c3e50', fontWeight: 'bold' }}>฿{Number(prod.price).toLocaleString()}</td>
+                  <td style={{ color: '#00bcd4', fontWeight: 'bold' }}>฿{Number(prod.price).toLocaleString()}</td>
                   <td>
                     <span className={`prod-badge ${prod.is_available ? 'stock-ok' : 'stock-out'}`}>
                       {prod.is_available ? 'พร้อมขาย' : 'ของหมด'}
@@ -225,7 +225,7 @@ function ProductsPage() {
         {/* Pagination Controls */}
         {totalPages > 1 && (
           <div className="prod-pagination">
-            <span>แสดงหน้าที่ {currentPage} จาก {totalPages}</span>
+            <span className="pagination-info">แสดงหน้าที่ {currentPage} จาก {totalPages}</span>
             <div className="prod-page-btns">
               <button className="p-btn" onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}><FaChevronLeft /></button>
               {[...Array(totalPages)].map((_, idx) => (
@@ -290,7 +290,7 @@ function ProductsPage() {
                 </div>
               </div>
 
-              {/* 🌟🌟 ส่วนที่หายไป: เอากลับมาใส่ตรงนี้ครับ 🌟🌟 */}
+              {/*  */}
               <div className="prod-modal-footer">
                 <button type="button" onClick={() => setShowModal(false)} className="prod-btn-cancel">ยกเลิก</button>
                 <button type="submit" className="prod-btn-confirm">บันทึกข้อมูล</button>

@@ -10,6 +10,7 @@ import ReportsPage from "./pages/ReportsPage";
 import StockPage from "./pages/StockPage";
 import LoginPage from "./pages/LoginPage";
 import RolesPage from './pages/RolesPage';
+import POSPage from './pages/POSPage';
 
 
 // เช็คว่าเคยล็อกอินไว้หรือยัง โดยดึงข้อมูลจาก LocalStorage
@@ -25,6 +26,7 @@ createRoot(document.getElementById("root")).render(
 
       {/* 2. เช็คเงื่อนไข: ถ้าล็อกอินแล้ว (isLoggedIn) ให้โชว์ Layout แต่ถ้ายัง ให้เด้งไปหน้า /login */}
       <Route path="/" element={isLoggedIn ? <Layout /> : <Navigate to="/login" replace />}>
+        <Route path="pos" element={<POSPage />} />
         <Route path="sales" element={<SalesPage />} />
         <Route path="employees" element={<EmployeesPage />} />
         <Route path="roles" element={<RolesPage />} />

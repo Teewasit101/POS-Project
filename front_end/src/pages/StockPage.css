@@ -199,6 +199,11 @@
   background-color: #fcfcfc;
 }
 
+.pagination-info {
+  font-size: 14px;
+  color: #6b7280;
+}
+
 .prod-page-btns {
   display: flex;
   gap: 5px;
@@ -432,4 +437,11 @@
 .prod-filter-select:focus {
   border-color: #00bcd4;
   box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+}
+
+/* =========================================
+   ดัน Popup ของ SweetAlert ให้อยู่หน้าสุด (ทับ Modal)
+========================================= */
+.swal2-container {
+  z-index: 99999 !important; /* ดันให้อยู่เหนือ Modal ของเราที่ตั้งไว้ 9999 */
 }

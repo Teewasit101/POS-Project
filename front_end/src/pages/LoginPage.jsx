@@ -17,9 +17,9 @@ function LoginPage() {
       const user = JSON.parse(loggedInUser);
       // ถ้าเป็น Admin ให้กลับไปหน้า reports ถ้าเป็น Cashier ให้ไปหน้า sales
       if (user.role === 'Admin') {
-        window.location.replace('/sales');
+        window.location.replace('/pos');
       } else {
-        window.location.replace('/sales');
+        window.location.replace('/pos');
       }
     }
   }, []);
@@ -51,9 +51,9 @@ function LoginPage() {
         }).then(() => {
           // 2. ใช้ replace เพื่อเปลี่ยนหน้า และลบหน้า Login ออกจากประวัติการกด Back
           if (data.user.role === 'Admin') {
-            window.location.replace('/sales');
+            window.location.replace('/pos');
           } else {
-            window.location.replace('/sales');
+            window.location.replace('/pos');
           }
         });
 

@@ -199,6 +199,12 @@
   background-color: #fcfcfc;
 }
 
+.pagination-info {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+
 .prod-page-btns {
   display: flex;
   gap: 5px;

@@ -46,6 +46,7 @@ const rolesRoutes = require('./src/routes/rolesRoutes');
 const productsRoutes = require('./src/routes/productsRoutes');
 const categoriesRoutes = require('./src/routes/categoriesRoutes');
 const stockRoutes = require('./src/routes/stockRoutes');
+const salesRoutes = require('./src/routes/salesRoutes');
 
 // เปิดใช้งาน Routes
 app.use('/api/auth', authRoutes);
@@ -54,6 +55,7 @@ app.use('/api/roles', rolesRoutes);
 app.use('/api/products', productsRoutes);
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/stock', stockRoutes);
+app.use('/api/sales', salesRoutes);
 
 // ตั้งค่า Port และรัน Server
 const PORT = process.env.PORT || 5000;

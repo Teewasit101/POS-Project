@@ -41,12 +41,14 @@ function Sidebar() {
 
   // 1. สร้างรายการเมนูทั้งหมด และกำหนดว่า Role ไหนเห็นได้บ้าง
   const allMenuItems = [
-    { path: "/sales", label: "หน้าขาย", icon: <FaCashRegister />, allowedRoleIds: [1, 2] }, 
+    { path: "/pos", label: "POS", icon: <FaCashRegister />, allowedRoleIds: [1, 2] }, 
+    //{ path: "/sales", label: "หน้าขาย", icon: <FaCashRegister />, allowedRoleIds: [1, 2] }, 
     { path: "/products", label: "สินค้า", icon: <FaBoxOpen />, allowedRoleIds: [1, 2] }, 
     { path: "/stocks", label: "สต็อก", icon: <FaWarehouse />, allowedRoleIds: [1, 2] }, 
     { path: "/employees", label: "พนักงาน", icon: <FaUsers />, allowedRoleIds: [1] }, 
     { path: "/roles", label: "สิทธิ์", icon: <FaUsers />, allowedRoleIds: [1] },
     { path: "/reports", label: "รายงาน", icon: <FaChartBar />, allowedRoleIds: [1] }, 
+    
     
   ];
 
