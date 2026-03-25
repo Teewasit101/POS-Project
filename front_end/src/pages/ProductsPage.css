@@ -149,6 +149,7 @@
   width: 100%;             
 }
 
+.prod-btn-recipe,
 .prod-btn-edit,
 .prod-btn-delete {
   border: none;
@@ -170,7 +171,7 @@
 }
 
 .prod-btn-edit:hover {
-  background-color: #f5b041;
+  background-color: #f39c12;
   
 }
 
@@ -181,6 +182,13 @@
 .prod-btn-delete:hover {
   background-color: #c0392b;
   
+}
+
+.prod-btn-recipe {
+  background-color: #9b59b6;
+}
+.prod-btn-recipe:hover {
+  background-color: #8e44ad;
 }
 
 .prod-no-data {
@@ -362,6 +370,38 @@
   font-weight: bold;
 }
 
+.prod-recipe-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #9ca3af;
+  background-color: #f8f9fa; 
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+  color: #1f2937;
+  outline: none;
+}
+.prod-recipe-select:focus {
+  border-color: #00bcd4;
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+}
+
+.qty-input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #9ca3af;
+  background-color: white; 
+  outline: none;
+  transition: 0.2s;
+  color: #1f2937;
+}
+
+.qty-input:focus {
+  border-color: #00bcd4;
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+}
+
 /* =========================================
    ส่วนที่เพิ่มมาใหม่สำหรับรูปภาพ
 ========================================= */
@@ -419,6 +459,12 @@
   margin: 0;
 }
 
+.qty-input[type="number"]::-webkit-outer-spin-button,
+.qty-input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 /* =========================================
    Dropdown กรองหมวดหมู่ (Filter)
 ========================================= */
@@ -439,3 +485,4 @@
   border-color: #00bcd4;
   box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
 }
+

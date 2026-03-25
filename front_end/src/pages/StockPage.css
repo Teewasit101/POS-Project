@@ -148,7 +148,8 @@
   align-items: center;     
   width: 100%;             
 }
-
+.prod-btn-detail,
+.prod-btn-stcok-in,
 .prod-btn-edit,
 .prod-btn-delete {
   border: none;
@@ -170,7 +171,7 @@
 }
 
 .prod-btn-edit:hover {
-  background-color: #f5b041;
+  background-color: #f39c12;
   
 }
 
@@ -188,6 +189,21 @@
   color: #adb5bd;
   padding: 40px !important;
 }
+.prod-btn-stcok-in{
+  background-Color: #2ecc71;
+}
+
+.prod-btn-stcok-in:hover{
+  background-Color: #2eb165;
+}
+.prod-btn-detail{
+  background-Color: #3498db;
+}
+.prod-btn-detail:hover{
+  background-Color: #2980b9;
+}
+
+
 
 /* Pagination */
 .prod-pagination {

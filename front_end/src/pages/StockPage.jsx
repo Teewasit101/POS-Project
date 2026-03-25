@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './ProductsPage.css'; 
+//import './ProductsPage.css'; 
+import './StockPage.css';
 import { FaPlus, FaEdit, FaTrash, FaTimes, FaSearch, FaChevronLeft, FaChevronRight, FaBoxOpen, FaPlusCircle, FaList,FaExclamationTriangle } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
@@ -233,8 +234,8 @@ function StockPage() {
                     <td>
                       <div className="prod-action-buttons">
                         {/*  ปุ่มใหม่: รับของเข้า (สีเขียว) และ ดูล็อต (สีฟ้า) */}
-                        <button className="prod-btn-edit" style={{ backgroundColor: '#2ecc71' }} onClick={() => handleReceiveClick(item)} title="รับของเข้าสต็อก"><FaPlusCircle /></button>
-                        <button className="prod-btn-edit" style={{ backgroundColor: '#3498db' }} onClick={() => handleViewLotsClick(item)} title="ดูรายละเอียดล็อตสินค้า"><FaList /></button>
+                        <button className="prod-btn-stcok-in" onClick={() => handleReceiveClick(item)} title="รับของเข้าสต็อก"><FaPlusCircle /></button>
+                        <button className="prod-btn-detail" onClick={() => handleViewLotsClick(item)} title="ดูรายละเอียดล็อตสินค้า"><FaList /></button>
                         
                         {/* ปุ่มแก้ไขข้อมูลหลัก และ ลบ */}
                         <button className="prod-btn-edit" onClick={() => handleEditClick(item)} title="แก้ไขข้อมูลวัตถุดิบ"><FaEdit /></button>
@@ -360,7 +361,7 @@ function StockPage() {
                     <th>วันที่ซื้อ</th>
                     <th>วันหมดอายุ</th>
                     <th>จำนวนคงเหลือ</th>
-                    <th style={{ textAlign: 'center' }}>จัดการ</th> {/* 🌟 เพิ่มหัวคอลัมน์ */}
+                    <th style={{ textAlign: 'center' }}>จัดการ</th> {/*  เพิ่มหัวคอลัมน์ */}
                   </tr>
                 </thead>
                 <tbody>

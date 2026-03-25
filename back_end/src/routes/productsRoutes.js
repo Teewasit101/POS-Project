@@ -3,19 +3,40 @@ const router = express.Router();
 const pool = require('../../db');
 
 // 1. ดึงข้อมูลสินค้าทั้งหมด (พร้อมชื่อหมวดหมู่)
+// ดึงข้อมูลสินค้าทั้งหมด พร้อมเช็คสต็อกวัตถุดิบอัตโนมัติ (Real-time Stock Check)
+// ดึงข้อมูลสินค้าทั้งหมด พร้อมคำนวณว่า "ชงได้สูงสุดกี่แก้ว" (max_qty)
 router.get('/', async (req, res) => {
   try {
     const query = `
-      SELECT p.product_id, p.product_name, p.price, p.category_id, 
-             c.category_name, p.image_url, p.is_available 
+      SELECT 
+        p.*,
+        c.category_name,
+        --  สมองกลคำนวณโควต้า: หารปริมาณสต็อกด้วยสูตรชง แล้วปัดเศษลง
+        CASE 
+          WHEN p.is_available = false THEN 0
+          ELSE COALESCE(
+            (
+              SELECT MIN(FLOOR(COALESCE(inv.total_qty, 0) / pr.quantity))::INTEGER
+              FROM product_recipe pr
+              LEFT JOIN (
+                SELECT ingredient_id, SUM(quantity) as total_qty
+                FROM inventory
+                WHERE quantity > 0 AND (expiration_date IS NULL OR expiration_date >= CURRENT_DATE)
+                GROUP BY ingredient_id
+              ) inv ON pr.ingredient_id = inv.ingredient_id
+              WHERE pr.product_id = p.product_id
+            ),
+            9999 -- ถ้าไม่มีสูตรชง ถือว่ามีของ 9999 ชิ้น (ขายไม่อั้น)
+          )
+        END AS max_qty
       FROM products p
       LEFT JOIN categories c ON p.category_id = c.category_id
-      ORDER BY p.product_id ASC
+      ORDER BY p.product_id ASC;
     `;
     const result = await pool.query(query);
     res.status(200).json(result.rows);
   } catch (error) {
-    console.error(error);
+    console.error('Error fetching products:', error);
     res.status(500).json({ message: 'เกิดข้อผิดพลาดในการดึงข้อมูลสินค้า' });
   }
 });
