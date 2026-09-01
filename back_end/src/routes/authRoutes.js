@@ -37,7 +37,7 @@ router.post('/login', async (req, res) => {
         username: user.username,
         name: `${user.first_name} ${user.last_name}`,
         role: user.role_name,
-        role_id: user.role_id  // ✨ แก้ไขจุดที่ 2: ส่งเลข role_id กลับไปให้ React
+        role_id: user.role_id  //ส่งเลข role_id กลับไปให้ React
       }
     });
 

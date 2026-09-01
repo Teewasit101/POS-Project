@@ -13,7 +13,7 @@ router.get('/:productId', async (req, res) => {
         pr.ingredient_id,
         i.ingredient_name,
         i.unit,
-        pr.quantity -- 🌟 ใช้ชื่อคอลัมน์ quantity ตาม Database ของคุณ
+        pr.quantity --  ใช้ชื่อคอลัมน์ quantity ตาม Database ของคุณ
       FROM product_recipe pr
       JOIN ingredients i ON pr.ingredient_id = i.ingredient_id
       WHERE pr.product_id = $1
@@ -30,7 +30,7 @@ router.get('/:productId', async (req, res) => {
 // 2. เพิ่มส่วนผสมเข้าไปในสูตรชง
 router.post('/:productId', async (req, res) => {
   const { productId } = req.params;
-  // 🌟 รับค่า quantity จากหน้าเว็บ
+  //  รับค่า quantity จากหน้าเว็บ
   const { ingredient_id, quantity } = req.body; 
   try {
     await pool.query(

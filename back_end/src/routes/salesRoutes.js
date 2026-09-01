@@ -28,18 +28,19 @@ router.post('/', async (req, res) => {
         'INSERT INTO order_items (order_id, product_id, quantity, price) VALUES ($1, $2, $3, $4)',
         [newOrderId, item.product_id, item.qty, item.price]
       );
-
+      //1. ค้นหาว่าเมนูนี้ใช้สูตรชง (วัตถุดิบ) อะไรบ้าง
       const recipeRes = await pool.query('SELECT ingredient_id, quantity FROM product_recipe WHERE product_id = $1', [item.product_id]);
 
       for (let recipe of recipeRes.rows) {
         let amountNeeded = recipe.quantity * item.qty; 
+        // 2. ไปดึงล็อตวัตถุดิบที่เก่าที่สุดมาเตรียมตัดสต็อก (FIFO)
         const lotsRes = await pool.query(
           `SELECT inventory_id, quantity FROM inventory 
            WHERE ingredient_id = $1 AND quantity > 0 AND (expiration_date IS NULL OR expiration_date >= CURRENT_DATE)
            ORDER BY expiration_date ASC NULLS LAST, purchase_date ASC`,
           [recipe.ingredient_id]
         );
-
+        //ตัดสต็อก
         for (let lot of lotsRes.rows) {
           if (amountNeeded <= 0) break; 
           if (lot.quantity >= amountNeeded) {
@@ -55,7 +56,7 @@ router.post('/', async (req, res) => {
     }
 
     await pool.query('COMMIT');
-    // 🌟 ส่งข้อมูลออเดอร์กลับไปให้ Frontend ทำใบเสร็จ
+    //  ส่งข้อมูลออเดอร์กลับไปให้ Frontend ทำใบเสร็จ
     res.status(201).json({ 
       message: 'ชำระเงินสำเร็จ!', 
       order_id: newOrderId,

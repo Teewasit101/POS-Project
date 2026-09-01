@@ -10,12 +10,12 @@ function POSPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [cart, setCart] = useState([]);
 
-  // 🌟 State สำหรับระบบชำระเงิน
+  //  State สำหรับระบบชำระเงิน
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState('เงินสด'); // 'เงินสด' หรือ 'โอนเงิน'
   const [amountReceived, setAmountReceived] = useState('');
   
-  // 🌟 State สำหรับใบเสร็จ
+  //  State สำหรับใบเสร็จ
   const [showReceiptModal, setShowReceiptModal] = useState(false);
   const [completedOrder, setCompletedOrder] = useState(null);
 
@@ -95,7 +95,7 @@ function POSPage() {
   const confirmPayment = async () => {
     
     // ==========================================
-    //  ระบบดักจับข้อผิดพลาด (Validation) สุดแกร่ง
+    //  ระบบดักจับข้อผิดพลาด (Validation) 
     // ==========================================
     if (paymentMethod === 'เงินสด') {
       const received = parseInt(amountReceived);

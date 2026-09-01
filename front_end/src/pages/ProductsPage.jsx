@@ -11,7 +11,7 @@ function ProductsPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategoryFilter, setSelectedCategoryFilter] = useState('');
 
-  // 🌟 เปลี่ยนชื่อตัวแปรให้ตรงกับ DB (quantity)
+  //  เปลี่ยนชื่อตัวแปรให้ตรงกับ DB (quantity)
   const [showRecipeModal, setShowRecipeModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [recipeItems, setRecipeItems] = useState([]);
